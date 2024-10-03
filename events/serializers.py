@@ -10,11 +10,12 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['id', 'title', 'description', 'date_time', 'location', 'organizer', 'capacity', 'created_date']
+        fields = ['id', 'title', 'description', 'date_time', 'location', 'organizer', 'capacity', 'created_date','available_slots']
         read_only_fields = ['organizer', 'created_date']
 
     def get_available_slots(self, obj):
-        return obj.capacity - obj.attendees.count()
+        return obj.capacity - obj.registered_users.count()  # Adjust based on how you're tracking registrations
+
 
     def validate_date_time(self, value):
         """Ensure the event date is in the future."""
