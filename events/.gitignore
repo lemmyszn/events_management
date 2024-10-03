@@ -1,0 +1,49 @@
+# Python
+*.py[cod]
+__pycache__/
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Django
+*.log
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+__init__.pyc
+*.log
+*.pot
+*.pyc
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# IDE settings
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Migrations
+*/migrations/*.py
+*/migrations/*.pyc
+*/migrations/__init__.py
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
+
+# MySQL
+*.sql
