@@ -43,25 +43,25 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',   
-        'rest_framework.authentication.TokenAuthentication', # Token-based authentication
-        'rest_framework_simplejwt.authentication.JWTAuthentication' # JWT-based authentication
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # JWT-based authentication
+        'rest_framework.authentication.TokenAuthentication',          # Token-based authentication
+        'rest_framework.authentication.SessionAuthentication',        # Session-based authentication
+        'rest_framework.authentication.BasicAuthentication',          # Basic authentication (if needed)
     ],
-     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', # Require authentication by default
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # Require authentication by default
     ],
-     'DEFAULT_FILTER_BACKENDS': [
-         'django_filters.rest_framework.DjangoFilterBackend',
-         'rest_framework.filters.SearchFilter',
-         'rest_framework.filters.orderingFilter',
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',  # Enable DjangoFilterBackend
+        'rest_framework.filters.SearchFilter',               # Enable search filters
+        'rest_framework.filters.OrderingFilter',             # Enable ordering filters
+    ],
+}
 
-    ],
-    
-    }
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

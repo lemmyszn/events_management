@@ -14,9 +14,12 @@ class Event(models.Model):
     location = models.CharField(max_length=255)
     organizer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='events')
     capacity = models.IntegerField()
-    created_date = models.DateTimeField(auto_now_add=True)
-    attendees = models.ManyToManyField(User, related_name='registered_events', blank=True)
+    created_date = models.DateTimeField(default=timezone.now)
+    registered_users = models.ManyToManyField(User, related_name='registered_events', blank=True)
     waitlist = models.ManyToManyField(User, related_name='waitlist_events', blank=True)  # Optional waitlist feature
+    
+
+
 
     def has_space(self):
         return self.attendees.count() < self.capacity

@@ -8,7 +8,7 @@ from .views import (
 )
 
 from rest_framework.routers import DefaultRouter
-
+from .views import EventListCreateView
 # Initialize the DefaultRouter and register viewsets
 router = DefaultRouter()
 router.register(r'events', EventViewSet, basename='event')
@@ -23,11 +23,11 @@ urlpatterns = [
     path('events/upcoming/', UpcomingEventListView.as_view(), name='upcoming-events'),
     path('events/<int:event_id>/register/', RegisterForEventView.as_view(), name='register-event'),
     path('events/<int:event_id>/waitlist/', JoinWaitlistView.as_view(), name='waitlist-event'),
-    path('events/create/', CreateEventView.as_view(), name='create-event'),
+    path('create-event/', CreateEventView.as_view(), name='create-event'),
     path('events/<int:pk>/manage/', ManageEventView.as_view(), name='manage-event'),
     path('api/register/', RegisterUserView.as_view(), name='register'),
     path('api/login/', CustomAuthToken.as_view(), name='login'),
     path('api/events/', EventListView.as_view(), name='event-list'),
-    path('api/events/<int:pk>/', EventDetailView.as_view(), name='event-detail'),
     path('', include(router.urls)),  # Includes the router URLs for viewsets
+    
 ]
